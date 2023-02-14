@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load  static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple Translator</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'semantic-ui/semantic.min.css' %}">
+</head>
+<body>
+	<div class="ui header segment">
+		<div class="ui container">
+			<h2 class="ui header"><b>Online Tarjimon</b></h2>
+			<div class="ui divider"></div>
+			<p><b>Sifatli online tarjimon</b></p>
+		</div>
+	</div>
+	<div class="ui container">
+		<div class="ui placeholder segment">
+			<div class="ui icon header">
+				Ingilizcha-O'zbekcha va O'zbekcha Inglizcha
+			</div>
+			<div class="inline" style="width:88%;">
+				<div class="ui massive form search">
+					<form method = "GET" action = "/" class="ui icon input" style="width:100%">
+						<input name = "q" value="{{q}}" class="prompt"  type="text" placeholder="So'z kiriting...">
+						<i class="search link icon"></i>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="ui stacked segment">
+			<table class="ui celled large blue table">
+				<thead>
+					<tr>
+						<th>Inglizcha <i class="us flag"></i></th>
+						<th>O'zbekcha <i class="uz flag"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% if natija %}
+						{% for tarjima in natija %}
+					<tr>
+						<td>
+							<b>{{ tarjima.inglizcha }}</b>
+						</td>
+						<td>
+							<b>{{ tarjima.uzbekcha }}</b>
+						</td>
+					</tr>
+					{% endfor %}
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
